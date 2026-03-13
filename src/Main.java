@@ -1,13 +1,31 @@
-public class Main {
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class UniversityMain {
     public static void main(String[] args) {
-        Student s = new Student("S1", "Joshua", "joshua.abishua@strathmore.edu", "Diploma In Business Information Technology");
-        Lecturer l = new Lecturer("L1", "Kelvin Ouma", "kouma@strathmore.edu", "Strathmore Institute");
-        Course c = new SimpleCourse("1201", "Object Oriented Programming");
+        Scanner input = new Scanner(System.in);
+        int age = 0;
+        boolean valid = false;
 
-        Person personRef = s;
-        personRef.displayDetails();
+        while (!valid) {
+            try {
+                System.out.print("Enter student age: ");
+                age = input.nextInt();      // may throw InputMismatchException
+                if (age <= 0) {
+                    System.out.println("Age must be positive. Try again.");
+                } else {
+                    valid = true;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid number, please enter an integer.");
+                input.next(); // clear wrong token
+            } finally {
+                System.out.println("Age input attempt finished.\n");
+            }
+        }
 
-        l.displayDetails();
-        c.displayDetails();
+        System.out.println("Student age recorded: " + age);
+        input.close();
     }
 }
+
