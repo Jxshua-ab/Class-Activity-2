@@ -1,3 +1,3 @@
-public  interface Contactable {
+public interface Contactable {
     String getEmail();
 }

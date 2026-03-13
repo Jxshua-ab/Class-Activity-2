@@ -20,7 +20,7 @@ public class Main {
         String courseName = null;
 
         try {
-            System.out.println("=== Create Student ===");
+            System.out.println("Create Student");
             System.out.print("Enter student ID: ");
             studentId = input.nextLine();
 
@@ -33,7 +33,7 @@ public class Main {
             System.out.print("Enter student programme: ");
             studentProgram = input.nextLine();
 
-            System.out.println("\n=== Create Lecturer ===");
+            System.out.println("\nCreate Lecturer");
             System.out.print("Enter lecturer ID: ");
             lecturerId = input.nextLine();
 
@@ -46,7 +46,7 @@ public class Main {
             System.out.print("Enter lecturer department: ");
             lecturerDept = input.nextLine();
 
-            System.out.println("\n=== Create Course ===");
+            System.out.println("\nCreate Course");
             System.out.print("Enter course code: ");
             courseCode = input.nextLine();
 
@@ -61,7 +61,6 @@ public class Main {
             System.out.println("\nAttempted to read all user details.");
         }
 
-        // Only create objects if mandatory fields are not null/empty
         if (studentId != null && studentName != null &&
                 lecturerId != null && lecturerName != null &&
                 courseCode != null && courseName != null) {
@@ -82,3 +81,4 @@ public class Main {
         input.close();
     }
 }
+
