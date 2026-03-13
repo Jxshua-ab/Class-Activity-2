@@ -1,15 +1,19 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
 
+        List<Student> students = new ArrayList<>();
+
         String studentId = null;
         String studentName = null;
         String studentEmail = null;
-        String studentProgram = null;
+        String studentCourse = null;
 
         String lecturerId = null;
         String lecturerName = null;
@@ -30,8 +34,8 @@ public class Main {
             System.out.print("Enter student email: ");
             studentEmail = input.nextLine();
 
-            System.out.print("Enter student programme: ");
-            studentProgram = input.nextLine();
+            System.out.print("Enter student course: ");
+            studentCourse = input.nextLine();
 
             System.out.println("\nCreate Lecturer");
             System.out.print("Enter lecturer ID: ");
@@ -65,15 +69,34 @@ public class Main {
                 lecturerId != null && lecturerName != null &&
                 courseCode != null && courseName != null) {
 
-            Student s = new Student(studentId, studentName, studentEmail, studentProgram);
+            Student s = new Student(studentId, studentName, studentEmail, studentCourse);
             Lecturer l = new Lecturer(lecturerId, lecturerName, lecturerEmail, lecturerDept);
             Course c = new SimpleCourse(courseCode, courseName);
+
+            students.add(s);
 
             Person personRef = s;
             personRef.displayDetails();
 
             l.displayDetails();
             c.displayDetails();
+
+            System.out.println("All Students in Collection");
+            for(Student st : students)
+            {
+                st.displayDetails();
+            }
+
+            StudentsFileStorage.saveStudents(students, "students.txt");
+
+            List<Student> loadedStudents = StudentsFileStorage.loadStudents("students.txt");
+
+            System.out.println("Students Loaded From File");
+            for (Student st : loadedStudents)
+            {
+                st.displayDetails();
+            }
+
         } else {
             System.out.println("Could not create objects because some input was invalid or missing.");
         }
