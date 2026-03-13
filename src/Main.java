@@ -61,7 +61,6 @@ public class Main {
             System.out.println("\nAttempted to read all user details.");
         }
 
-        // Only create objects if mandatory fields are not null/empty
         if (studentId != null && studentName != null &&
                 lecturerId != null && lecturerName != null &&
                 courseCode != null && courseName != null) {
@@ -82,3 +81,4 @@ public class Main {
         input.close();
     }
 }
+
