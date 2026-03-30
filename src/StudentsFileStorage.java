@@ -26,7 +26,8 @@ public class StudentsFileStorage {
     public static List<Student> loadStudents(String fileName) {
         List<Student> students = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName)))
+        {
             String line;
 
             while ((line = reader.readLine()) != null) {
